@@ -4,11 +4,13 @@
 
 > 使用详情请见WiseDoge的项目说明。
 
-## 如何部署到Heroku平台
+### 如何部署到Heroku平台
 
-***请确保注册了Heroku平台的账号，以及绑定了一张信用卡.虽然部署依赖的Redis Nano版本免费，但是附加RedisToGo这个plugin是需要绑定信用卡的。注意每月的免费时长为950小时，足够使用了。***
+***请确保注册了Heroku平台的账号，以及绑定了一张信用卡。虽然部署依赖的Redis Nano版本免费，但是附加RedisToGo这个plugin是需要绑定信用卡的。注意Heroku平台所有你创建的app的每月免费时长为950小时，足够使用了。***
 
 > 另外一个前置条件是安装Heroku Cli，请从这个地址[下载](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)。
+
+以下是命令流程：
 
 ``` bash
 git clone https://github.com/EmptyChan/ProxyPool-Heroku.git
@@ -16,6 +18,8 @@ git clone https://github.com/EmptyChan/ProxyPool-Heroku.git
 cd ProxyPool-Heroku/
 
 heroku create [APP]  # APP是一个项目名称，随意取，最好特殊一点，允许连字符，不允许下划线
+
+heroku addons:create redistogo:nano  # 添加nano版本的RedisToGo
 
 git add .
 
@@ -26,12 +30,12 @@ git push heroku master  # 将内容提交并部署到Heroku平台
 heroku logs --tail  # 检查logs，可以看到内容输出
 ```
 
-## 测试是否部署成功
+### 测试是否部署成功
 
 > 请参考WiseDoge的项目说明 => [PorxyPool](https://github.com/WiseDoge/ProxyPool)
 
 注意部署后的地址不是```127.0.0.1```，而是```heroku app```的地址。
 
-## 查看RedisToGo中的数据
+### 查看RedisToGo中的数据
 
 如果想要查看```RedisToGo```中的数据，请参考这个[StackOverFlow](https://stackoverflow.com/questions/17846371/how-to-connect-to-redistogo-how-to-see-the-data)链接。
